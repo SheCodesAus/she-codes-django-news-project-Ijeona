@@ -3,6 +3,10 @@ from django.urls import reverse_lazy
 from .models import NewsStory
 from .forms import StoryForm
 
+class StoryView(generic.DetailView):
+    model = NewsStory
+    template_name = 'news/story.html'
+    context_object_name = 'story'
 class AddStoryView(generic.CreateView):
     form_class = StoryForm
     context_object_name = 'storyForm'
