@@ -4,6 +4,4 @@ from .models import NewsStory
 
 class StoryForm(ModelForm):
     class Meta:
-        model = NewsStory 
-        # Why does this need to be indented?* 
-    fields = ['title', 'author', 'pub_date', 'content']
+        model = NewsStoryfields = ['title', 'author', 'pub_date', 'content']widgets = {'pub_date': forms.DateInput(format=('%m/%d/%Y'),attrs={'class':'form-control', 'placeholder':'Select a date','type':'date'}),}
