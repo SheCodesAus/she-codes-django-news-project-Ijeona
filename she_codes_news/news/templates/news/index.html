@@ -2,12 +2,11 @@
 {% load static %}
 
 {% block stylesheets %}
-<link rel="stylesheet" type="text/css" href="{% static'news/styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
 {% endblock %}
 
 {% block content %}
     <h2>Latest News</h2>
-{% endblock %}
     <div id="latest-stories">
         {% if latest_stories %}
             {% for story in latest_stories %}
@@ -22,7 +21,7 @@
     <div id="all-stories">
         {% if latest_stories %}
             {% for story in all_stories %}
-            {% include "./storyCard.html" with story=story %}
+                {% include "./storyCard.html" with story=story %}
                 <p>{{ story.title }}</p>
             {% endfor %}
         {% else %}
@@ -31,3 +30,4 @@
     </div>
 
     <a href="{% url 'news:newStory' %}">Write New Story</a>
+{% endblock %}
