@@ -7,10 +7,11 @@
 
 {% block content %}
 <div id="story-wrapper">
+    <a href=" {% url 'news:editStory' story.id %}">Edit Story</a>
     <h2>{{ story.title }}</h2>
     <h4>{{ story.author }}</h4>
     <div id="story-content">
-        <img src="{% static '/news/images/placeholder-5.jpg' %}">
+        <img src="{{ story.image_url_field}}">
         {{ story.content|linebreaks }}
     </div>
 </div>

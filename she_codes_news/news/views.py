@@ -28,3 +28,8 @@ class IndexView(generic.ListView):
         context['latest_stories'] = NewsStory.objects.all().order_by('-pub_date')[:4]
         context['all_stories'] = NewsStory.objects.all().order_by('-pub_date')[:4]
         return context
+class EditStoryView(generic.UpdateView):
+    form_class = StoryForm
+    model = NewsStory
+    context_object_name = 'storyForm'
+    template_name = 'news/createStory.html' 
