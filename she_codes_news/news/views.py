@@ -33,3 +33,4 @@ class EditStoryView(generic.UpdateView):
     model = NewsStory
     context_object_name = 'storyForm'
     template_name = 'news/createStory.html' 
+

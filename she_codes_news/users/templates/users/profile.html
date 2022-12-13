@@ -1,1 +1,25 @@
-hello world
+{% extends "base.html" %}
+{% load static %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+<h2>{{ user.username }}'s Profile</h2>
+
+<p> Username: {{user.username}}</p>
+<p> Email: {{user.email}}</p>
+<p> Stories: </p>
+    
+    <div id="all-stories">
+        {% if user_stories %}
+            {% for story in user_stories %}
+                {% include "news/storyCard.html" with story=story %}
+                <!-- <p>{{ story.title }}</p> -->
+            {% endfor %}
+        {% else %}
+            <p>No stories are available.</p>
+        {% endif %}
+    </div>
+{% endblock %}

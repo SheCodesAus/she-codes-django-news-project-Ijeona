@@ -7,8 +7,9 @@
         {% endif %} -->
         {% if story.image_url_field %}
             <img src="{{ story.image_url_field}}">
+    
         {% else %}
-            <img src="../static/news/images/placeholder-{{ position }}.jpg">
+            <img src="https://picsum.photos/300?random={{ story.id }}">
         {% endif %}
         <div class="story-card-text">
             <h3>{{ story.title }}</h3>
