@@ -7,12 +7,19 @@
 
 {% block content %}
 
+{% if request.user.is_authenticated %}
 <form class= "create-story-form" action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <input class="button1" type="submit" value="submit">
-</form>
-
+    </form>
+{% else %}
+    <div>
+        <h2> You need to be logged in to create a story </h2>
+    </div>
+    <a href="{% url 'users:createAccount' %}"><button class="button1">CREATE ACCOUNT</a>
+    <a href="{% url 'login'%}"><button class="button1">LOGIN</a>
+{% endif %}
 
 
 {% endblock %}

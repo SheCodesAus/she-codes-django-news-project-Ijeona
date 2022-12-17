@@ -45,3 +45,16 @@ class All_stories_View(generic.ListView):
         context = super().get_context_data(**kwargs)
         context['all_stories'] = NewsStory.objects.all().order_by('-pub_date')
         return context
+
+class AuthorStories (generic.ListView): 
+    template_name = 'news/authorstories.html'
+    context_object_name = 'stories'
+
+    def get_queryset(self):
+       return NewsStory.objects.filter(author=self.kwargs['pk'])
+       
+class DeleteStoryView(generic.DeleteView):
+    model = NewsStory
+    context_object_name = 'story'
+    template_name = 'news/deleteStory.html' 
+    success_url = reverse_lazy('news:index')
